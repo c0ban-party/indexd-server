@@ -1,6 +1,6 @@
 FROM counterparty/base
 
-MAINTAINER Counterparty Developers <dev@counterparty.io>
+MAINTAINER Monaparty Developers <dev@monaparty.me>
 
 # Install newest stable nodejs and npm
 RUN apt-get update && apt-get -y remove nodejs npm gyp
@@ -18,7 +18,7 @@ RUN npm install -g node-gyp forever
 RUN mkdir -p /data/indexd/
 RUN mkdir /indexd
 WORKDIR /indexd
-RUN git clone https://github.com/CounterpartyXCP/indexd-server.git /indexd
+RUN git clone https://github.com/monaparty/indexd-server.git -b monaparty /indexd
 RUN npm install
 
 # start script
