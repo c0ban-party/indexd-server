@@ -1,0 +1,3 @@
+[submodule "lib/coininfo"]
+	path = lib/coininfo
+	url = https://github.com/test-party/coininfo.git
