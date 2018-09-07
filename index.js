@@ -3,6 +3,7 @@ let dotenv = require('dotenv')
 require('dotenv').load({path: process.env.CONFIG_FILE ? process.env.CONFIG_FILE : '.env'})
 
 let TESTNET = (process.env.TESTNET === '1' || process.env.TESTNET.toLowerCase() === 'true')
+let REGTEST = (process.env.REGTEST === '1' || process.env.REGTEST.toLowerCase() === 'true')
 let NETWORK = process.env.USE_ALTCOIN
 
 let debug = require('debug')('index')
@@ -22,7 +23,7 @@ service((err, adapter) => {
 
   // start the API server
   debug('starting API server')
-  app.use(api(adapter, {network: NETWORK, testnet: TESTNET}))
+  app.use(api(adapter, {network: NETWORK, testnet: TESTNET, regtest: REGTEST}))
   app.listen(process.env.SERVER_PORT);
   debug("App listening on port "+process.env.SERVER_PORT);
 })

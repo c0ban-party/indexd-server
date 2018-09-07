@@ -16,13 +16,15 @@ RUN npm install -g node-gyp forever
 RUN mkdir -p /data/indexd/
 COPY . /indexd
 WORKDIR /indexd
+
+ARG ENV_FILE=".env-example"
+COPY ./$ENV_FILE /indexd/.env
+
 RUN npm install
 
 # start script
 COPY ./docker/start.sh /usr/local/bin/start.sh
 RUN chmod a+x /usr/local/bin/start.sh
-
-EXPOSE 8432 18432
 
 # start indexd
 # CMD ["start.sh"]
